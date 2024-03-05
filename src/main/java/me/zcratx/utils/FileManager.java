@@ -87,7 +87,7 @@ public class FileManager {
         try {
             // Read the file
             //TODO Add a checker if the extension is in the path.
-            InputStream file = new FileInputStream(filePath + path + ".json");
+            InputStream file = new FileInputStream(filePath + path);
             byte[] data = file.readAllBytes();
             objective = mapper.readValue(data, Objective.class);
         } catch (FileNotFoundException e) {
@@ -97,6 +97,7 @@ public class FileManager {
         }
         return objective;
     }
+
 
 
 }

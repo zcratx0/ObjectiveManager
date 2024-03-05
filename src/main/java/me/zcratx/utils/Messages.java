@@ -14,5 +14,8 @@ public class Messages {
         bundle = ResourceBundle.getBundle("lang/lang", locale);
     }
 
+    public static  String isCorrect() {
+        return "(" + getMessage("yes") + "|" + getMessage("no") + ")";
+    }
 
 }

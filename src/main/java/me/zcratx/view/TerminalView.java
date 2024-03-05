@@ -12,9 +12,9 @@ import java.util.Scanner;
 public class TerminalView {
 
     public static void start() {
-        int value = 0;
+        int value = -256;
         Scanner input = new Scanner(System.in);
-        while (value != -1) {
+        do {
             System.out.println("Welcome");
             System.out.println("-".repeat(5));
             System.out.println("0 - " + Messages.getMessage("listElement"));
@@ -24,11 +24,14 @@ public class TerminalView {
             try {
                 System.out.println("Input: ");
                 value = input.nextInt();
-
             } catch (InputMismatchException e) {
                 //TODO Make a loop until correct selection happen
             }
             switch (value) {
+                case -1:
+                    System.out.println("Good Bye!");
+                    System.out.close();
+                    break;
                 case 0:
                     System.out.println("READING FILES\n" + "-".repeat(5));
                     MainController.listAllObjective().forEach(objective -> System.out.println(objective));
@@ -53,14 +56,15 @@ public class TerminalView {
                                 t = askUserToWrite(Messages.getMessage("timeBound"));
                         objective1 = new Objective(s, m, a, r, t, null);
                         showObjective(objective1);
-                        System.out.println("-".repeat(10) + Messages.getMessage("saveObjective"));
+                        System.out.println("-".repeat(10) + Messages.getMessage("saveObjective") + " " + Messages.isCorrect());
                     } while (!input.next().equalsIgnoreCase(Messages.getMessage("yes")));
                     FileManager.save(objective1);
+                    break;
+                default:
+                    System.out.println(Messages.getMessage("invalidOption"));
 
             }
-
-
-        }
+        } while (value != -1);
 
 
     }
@@ -72,7 +76,7 @@ public class TerminalView {
         do {
             System.out.println(message + ": ");
             userInput = input.next() + input.nextLine();
-            System.out.println( Messages.getMessage("isCorrect") +" " + userInput);
+            System.out.println( Messages.getMessage("isCorrect") + " " + Messages.isCorrect() +" " + userInput);
         } while (!input.next().equalsIgnoreCase(Messages.getMessage("yes")));
         return userInput;
     }

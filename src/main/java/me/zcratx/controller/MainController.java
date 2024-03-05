@@ -13,7 +13,7 @@ public class MainController {
     }
 
     public static Objective openObjective(String path) {
-        if (path.endsWith(".json")) path = path.replace(".json", "");
+        if (!path.endsWith(".json")) path = path  + ".json";
         return FileManager.load(path);
     }
 
