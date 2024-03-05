@@ -1,8 +1,8 @@
 # ObjectiveManager
 
+ObjectiveManager is an application designed for adding and managing objectives using the SMART model.
 
-
-# ROAD MAP
+## ROAD MAP
 - [x] Language support: Add support for multiple programming languages.
 - [ ] Properties: Implement a system for managing object properties.
 - [ ] Cache: Introduce caching mechanisms to improve performance.
